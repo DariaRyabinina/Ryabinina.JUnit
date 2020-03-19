@@ -1,6 +1,8 @@
 package org.DariaRyabinina;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,41 +12,10 @@ public class ComplexTest {
 
     public static final Logger LOG = LoggerFactory.getLogger(ComplexTest.class);
 
-    @BeforeAll
-    static void beforeAll() {
-        LOG.info("Before All");
-
-    }
-
-    @BeforeEach
-    void beforeEach() {
-        LOG.info("Before Each");
-
-    }
-
-    @AfterAll
-    static void afterAll() {
-        LOG.info("After All");
-
-    }
-
-    @AfterEach
-    void afterEach() {
-        LOG.info("After Each");
-
-    }
-
-    @DisplayName("1 сложный тест")
-    @Test
-    void complexTest1() {
-        LOG.info("ComplexTest1 complete");
-    }
-
-    @Tag("LongTest")
-    @DisplayName("2 сложный тест")
-    @Test
-    void complexTest2() {
-        LOG.info("ComplexTest2 complete");
+    @ParameterizedTest
+    @ValueSource(strings = {"Василий - 25", "Николай - 30"})
+    void paramTest(String name) {
+        LOG.info(name);
 
     }
 }
